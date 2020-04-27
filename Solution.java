@@ -33,7 +33,7 @@ public class Solution {
     }
 
     int total_stepsToReach_kaprekarConstant_forFourDigits = 0;
-    while (num != KAPREKAR_CONSTANT_FOR_FOUR_DIGITS || num != 0) {
+    while (num != KAPREKAR_CONSTANT_FOR_FOUR_DIGITS && num != 0) {
       record_digitsFrequency(num);
       num = arrangeInteger_inDescendingDigits(num)-arrangeInteger_inAscendingDigits(num);
       total_stepsToReach_kaprekarConstant_forFourDigits++;
