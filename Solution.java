@@ -28,18 +28,18 @@ public class Solution {
    *         transformed to a Kaprekar Constant for four digits. Otherwise, it returns -1.
    */
   public static int find_numberOfSteps_toReach_kaprekarConstant_forFourDigits(int num) {
-    if (num >= 10000||arrangeInteger_inDescendingDigits(num)==arrangeInteger_inAscendingDigits(num)) {
+    if (num >= 10000) {
       return -1;
     }
 
     int total_stepsToReach_kaprekarConstant_forFourDigits = 0;
-    while (num != KAPREKAR_CONSTANT_FOR_FOUR_DIGITS) {
+    while (num != KAPREKAR_CONSTANT_FOR_FOUR_DIGITS || num != 0) {
       record_digitsFrequency(num);
-      num = arrangeInteger_inDescendingDigits(num)==arrangeInteger_inAscendingDigits(num);
+      num = arrangeInteger_inDescendingDigits(num)-arrangeInteger_inAscendingDigits(num);
       total_stepsToReach_kaprekarConstant_forFourDigits++;
     }
 
-    return total_stepsToReach_kaprekarConstant_forFourDigits;
+    return num == 0 ? -1 : total_stepsToReach_kaprekarConstant_forFourDigits;
   }
 
   /**
