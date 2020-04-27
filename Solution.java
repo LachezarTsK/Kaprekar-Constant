@@ -14,12 +14,14 @@ public class Solution {
   /**
    * Finds the number of steps to transform the input integer into a Kaprekar Constant for four
    * digits (6174) by repeatedly rearranging the digits of the input into integers with descending 
-   * and ascending order of digits, and then subtracting the ascending from the descending integer.
+   * and ascending digit order, and then subtracting the ascending from the descending integer.
    *
    * Most of the integers less than 10000 can be transformed to a Kaprekar Constant for four
    * digits, with some exceptions, where followig the described steps will result in zero.
    *
-   * Exception example: 1111 => 1111(descedning) - 1111(ascedning)=0;
+   * Example: 5478 => 8754(descedning) - 4578(ascedning) = 4176;
+   *          4176 => the same steps, until reaching Kaprekar Constant for four digits.
+   * Exception example: 1111 => 1111(descedning) - 1111(ascedning) = 0;
    *
    * @return A non-negative integer, representing the number of steps, if the input can be
    *         transformed to a Kaprekar Constant for four digits. Otherwise, it returns -1.
