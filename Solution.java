@@ -13,34 +13,26 @@ public class Solution {
 
   /**
    * Finds the number of steps to transform the input integer into a Kaprekar Constant for four
-   * digits (6174) by repeatedly rearranging the digits of the input into descending and ascending
-   * order, and then subtracting the ascending from the descending integer.
+   * digits (6174) by repeatedly rearranging the digits of the input into integers with descending 
+   * and ascending order of digits, and then subtracting the ascending from the descending integer.
    *
-   * <p>Most of the integers less than 10000 can be transformed to a kaprekar constant for four
+   * Most of the integers less than 10000 can be transformed to a Kaprekar Constant for four
    * digits, with some exceptions, where followig the described steps will result in zero.
    *
-   * <p>Exception example: 1111 => 1111(descedning) - 1111(ascedning)=0;
+   * Exception example: 1111 => 1111(descedning) - 1111(ascedning)=0;
    *
    * @return A non-negative integer, representing the number of steps, if the input can be
-   *     transformed to a Kaprekar Constant for four digits. Otherwise, it returns -1.
+   *         transformed to a Kaprekar Constant for four digits. Otherwise, it returns -1.
    */
   public static int find_numberOfSteps_toReach_kaprekarConstant(int num) {
-
-    if (num >= 10000) {
+    if (num >= 10000||arrangeInteger_inDescendingDigits(num)==arrangeInteger_inAscendingDigits(num)) {
       return -1;
     }
 
     int total_stepsToReach_kaprekarConstant = 0;
     while (num != 6174) {
       record_digitsFrequency(num);
-      int descending = arrangeInteger_inDescendingDigits(num);
-      int ascending = arrangeInteger_inAscendingDigits(num);
-
-      if (descending == ascending) {
-        return -1;
-      }
-
-      num = descending - ascending;
+      num = arrangeInteger_inDescendingDigits(num)==arrangeInteger_inAscendingDigits(num);
       total_stepsToReach_kaprekarConstant++;
     }
 
@@ -48,11 +40,13 @@ public class Solution {
   }
 
   /**
-   * Creates an integer where its digits are rearranged in an descending order. If the integer has
+   * Creates an integer where its digits are rearranged in a descending order. If the integer has
    * less than four digits, then one or more zeros are added at the back of the rearranged integer,
    * so that it has four digits.
    *
-   * <p>Example: (34 => 4300), (1 => 1000), (794 => 9740)
+   * Example: (34 => 4300), (1 => 1000), (794 => 9740)
+   *
+   *@return An integer with descending order of its digits.
    */
   private static int arrangeInteger_inDescendingDigits(int num) {
 
@@ -67,7 +61,6 @@ public class Solution {
         frequency--;
       }
     }
-
     return result;
   }
 
@@ -76,7 +69,9 @@ public class Solution {
    * one or more zeros, trailing or between the other non-zero digits, then they are disregarded,
    * since placing zeros at the front of the integer does not change the value of the integer.
    *
-   * <p>Example: (5280 => 258), (9005 => 59), (8000 => 8)
+   * Example: (5280 => 258), (9005 => 59), (8000 => 8)
+   *
+   *@return An integer with ascending order of its digits.
    */
   private static int arrangeInteger_inAscendingDigits(int num) {
 
@@ -91,7 +86,6 @@ public class Solution {
         frequency--;
       }
     }
-
     return result;
   }
 
