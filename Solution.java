@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Solution {
 
   private static int[] digits_frequency;
+  private static final int KAPREKAR_CONSTANT_FOR_FOUR_DIGITS = 6174;
 
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
@@ -32,7 +33,7 @@ public class Solution {
     }
 
     int total_stepsToReach_kaprekarConstant = 0;
-    while (num != 6174) {
+    while (num != KAPREKAR_CONSTANT_FOR_FOUR_DIGITS) {
       record_digitsFrequency(num);
       num = arrangeInteger_inDescendingDigits(num)==arrangeInteger_inAscendingDigits(num);
       total_stepsToReach_kaprekarConstant++;
