@@ -8,7 +8,7 @@ public class Solution {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     int num = scanner.nextInt();
-    int result = find_numberOfSteps_toReach_kaprekarConstant(num);
+    int result = find_numberOfSteps_toReach_kaprekarConstant_forFourDigits(num);
     System.out.println(result);
   }
 
@@ -27,19 +27,19 @@ public class Solution {
    * @return A non-negative integer, representing the number of steps, if the input can be
    *         transformed to a Kaprekar Constant for four digits. Otherwise, it returns -1.
    */
-  public static int find_numberOfSteps_toReach_kaprekarConstant(int num) {
+  public static int find_numberOfSteps_toReach_kaprekarConstant_forFourDigits(int num) {
     if (num >= 10000||arrangeInteger_inDescendingDigits(num)==arrangeInteger_inAscendingDigits(num)) {
       return -1;
     }
 
-    int total_stepsToReach_kaprekarConstant = 0;
+    int total_stepsToReach_kaprekarConstant_forFourDigits = 0;
     while (num != KAPREKAR_CONSTANT_FOR_FOUR_DIGITS) {
       record_digitsFrequency(num);
       num = arrangeInteger_inDescendingDigits(num)==arrangeInteger_inAscendingDigits(num);
-      total_stepsToReach_kaprekarConstant++;
+      total_stepsToReach_kaprekarConstant_forFourDigits++;
     }
 
-    return total_stepsToReach_kaprekarConstant;
+    return total_stepsToReach_kaprekarConstant_forFourDigits;
   }
 
   /**
