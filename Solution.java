@@ -28,7 +28,7 @@ public class Solution {
    *         transformed to a Kaprekar Constant for four digits. Otherwise, it returns -1.
    */
   public static int find_numberOfSteps_toReach_kaprekarConstant_forFourDigits(int num) {
-    if (num >= 10000) {
+    if (num < 1 || num > 9999) {
       return -1;
     }
 
